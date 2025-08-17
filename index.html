@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Resume Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-file-alt"></i> Professional Resume Builder</h1>
+            <p>Create a perfect single-page resume</p>
+        </header>
+        
+        <div class="container">
+            <!-- Input Sidebar -->
+            <div class="sidebar">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="personal">Personal</button>
+                    <button class="tab-btn" data-tab="education">Education</button>
+                    <button class="tab-btn" data-tab="experience">Experience</button>
+                    <button class="tab-btn" data-tab="projects">Projects</button>
+                    <button class="tab-btn" data-tab="social">Social</button>
+                </div>
+                
+                <div class="tab-content active" id="personal-tab">
+                    <h2 class="section-title">Personal Information</h2>
+                    <div class="form-group">
+                        <label for="fullName"><i class="fas fa-user"></i> Full Name</label>
+                        <input type="text" id="fullName" class="form-control" placeholder="John Doe" value="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email</label>
+                        <input type="email" id="email" class="form-control" placeholder="john.doe@example.com" value="john.doe@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+                        <input type="text" id="phone" class="form-control" placeholder="(123) 456-7890" value="(123) 456-7890">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="location"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="location" class="form-control" placeholder="San Francisco, CA" value="San Francisco, CA">
+                    </div>
+                    
+                    <h2 class="section-title">Summary</h2>
+                    <div class="form-group">
+                        <label for="summary"><i class="fas fa-file-alt"></i> Professional Summary</label>
+                        <textarea id="summary" class="form-control" rows="3" placeholder="Passionate software engineer...">Recent computer science graduate with a passion for developing scalable web applications and working across the full stack. Seeking to leverage solid development skills with focus on collaboration, communication, and passion.</textarea>
+                    </div>
+                    
+                    <h2 class="section-title">Skills</h2>
+                    <div class="form-group">
+                        <label for="skills"><i class="fas fa-code"></i> Skills (comma separated)</label>
+                        <input type="text" id="skills" class="form-control" placeholder="Java, Python, React..." value="Java, Python, React, Node.js, SQL, Git, Docker, AWS, JavaScript, HTML5/CSS3">
+                    </div>
+                </div>
+                
+                <!-- Education Tab -->
+                <div class="tab-content" id="education-tab">
+                    <h2 class="section-title">Education</h2>
+                    <div id="educationContainer">
+                        <div class="optional-section">
+                            <div class="form-group">
+                                <label>Degree/Certificate</label>
+                                <input type="text" class="form-control edu-degree" placeholder="Bachelor of Science in Computer Science" value="Bachelor of Science in Computer Science">
+                            </div>
+                            <div class="form-group">
+                                <label>Institution</label>
+                                <input type="text" class="form-control edu-institution" placeholder="University of Technology" value="University of Technology">
+                            </div>
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" class="form-control edu-date" placeholder="2019 - 2023" value="2019 - 2023">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" class="form-control edu-location" placeholder="San Francisco, CA" value="San Francisco, CA">
+                            </div>
+                            <div class="form-group">
+                                <label>CGPA/Score</label>
+                                <input type="text" class="form-control edu-score" placeholder="8.96/10.0" value="8.96/10.0">
+                            </div>
+                            <div class="form-group">
+                                <label>Relevant Coursework</label>
+                                <textarea class="form-control edu-coursework" rows="2" placeholder="Computer Architecture, DBMS...">Computer Architecture, DBMS, Operating System, OOPS, Computer Network</textarea>
+                            </div>
+                            <button class="btn btn-sm remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" id="addEducation"><i class="fas fa-plus"></i> Add Another Education</button>
+                </div>
+                
+                <div class="tab-content" id="experience-tab">
+                    <h2 class="section-title">Experience</h2>
+                    <div id="experienceContainer">
+                        <div class="optional-section">
+                            <div class="form-group">
+                                <label>Job Title</label>
+                                <input type="text" class="form-control exp-title" placeholder="Software Developer Intern" value="Software Developer Intern">
+                            </div>
+                            <div class="form-group">
+                                <label>Company</label>
+                                <input type="text" class="form-control exp-company" placeholder="Tech Solutions Inc." value="Tech Solutions Inc.">
+                            </div>
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" class="form-control exp-date" placeholder="Jun 2022 - Aug 2022" value="Jun 2022 - Aug 2022">
+                            </div>
+                            <div class="form-group">
+                                <label>Location</label>
+                                <input type="text" class="form-control exp-location" placeholder="San Francisco, CA" value="San Francisco, CA">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control exp-description" rows="2" placeholder="Developed web applications...">Developed and maintained web applications using React and Node.js. Collaborated with team members using Agile methodologies.</textarea>
+                            </div>
+                            <button class="btn btn-sm remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" id="addExperience"><i class="fas fa-plus"></i> Add Another Experience</button>
+                </div>
+                
+                <div class="tab-content" id="projects-tab">
+                    <h2 class="section-title">Projects</h2>
+                    <div id="projectsContainer">
+                        <div class="optional-section">
+                            <div class="form-group">
+                                <label>Project Title</label>
+                                <input type="text" class="form-control project-title" placeholder="E-Commerce Website" value="E-Commerce Platform">
+                            </div>
+                            <div class="form-group">
+                                <label>Project Link</label>
+                                <input type="text" class="form-control project-link" placeholder="https://github.com/username/project" value="https://github.com/johndoe/ecommerce">
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control project-description" rows="2" placeholder="Built a full-stack...">Full-stack e-commerce application built with React, Node.js, and MongoDB.</textarea>
+                            </div>
+                            <button class="btn btn-sm remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" id="addProject"><i class="fas fa-plus"></i> Add Another Project</button>
+                    
+                    <h2 class="section-title">Certifications</h2>
+                    <div id="certificationsContainer">
+                        <div class="optional-section">
+                            <div class="form-group">
+                                <label>Certification Name</label>
+                                <input type="text" class="form-control cert-name" placeholder="AWS Certified Developer" value="AWS Certified Developer">
+                            </div>
+                            <div class="form-group">
+                                <label>Issuing Organization</label>
+                                <input type="text" class="form-control cert-org" placeholder="Amazon Web Services" value="Amazon Web Services">
+                            </div>
+                            <button class="btn btn-sm remove-btn"><i class="fas fa-trash"></i> Remove</button>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline" id="addCertification"><i class="fas fa-plus"></i> Add Another Certification</button>
+                </div>
+                
+                <div class="tab-content" id="social-tab">
+                    <h2 class="section-title">Social Media</h2>
+                    <div class="form-group">
+                        <label for="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</label>
+                        <input type="text" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/username" value="https://linkedin.com/in/johndoe">
+                    </div>
+                    <div class="form-group">
+                        <label for="github"><i class="fab fa-github"></i> GitHub</label>
+                        <input type="text" id="github" class="form-control" placeholder="https://github.com/username" value="https://github.com/johndoe">
+                    </div>
+                    <div class="form-group">
+                        <label for="portfolio"><i class="fas fa-globe"></i> Portfolio</label>
+                        <input type="text" id="portfolio" class="form-control" placeholder="https://yourportfolio.com" value="https://johndoe.dev">
+                    </div>
+                    
+                    <div class="note">
+                        <i class="fas fa-lightbulb"></i> 
+                        <strong>One-Page Resume:</strong> All content is optimized to fit on a single A4 page. 
+                        Hyperlinks will remain clickable in the exported PDF.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Resume Preview -->
+            <div class="preview-container">
+                <div class="preview-header">
+                    <h2 class="preview-title"><i class="fas fa-eye"></i> Resume Preview</h2>
+                    <button class="btn download-btn" id="downloadBtn">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
+                </div>
+                
+                <div class="resume-preview compact-resume" id="resumePreview">
+                    <!-- Optimized Header -->
+                    <div class="resume-header">
+                        <div class="name-container">
+                            <h1 class="name">John Doe</h1>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>San Francisco, CA</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>john.doe@example.com</span>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <span>(123) 456-7890</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/johndoe" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://github.com/johndoe" class="social-link">
+                                <i class="fab fa-github"></i>
+                                <span>GitHub</span>
+                            </a>
+                            <a href="https://johndoe.dev" class="social-link">
+                                <i class="fas fa-globe"></i>
+                                <span>Portfolio</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Summary Section -->
+                    <div class="section">
+                        <h3 class="section-header">Summary</h3>
+                        <p>Recent computer science graduate with a passion for developing scalable web applications and working across the full stack. Seeking to leverage solid development skills with focus on collaboration, communication, and passion.</p>
+                    </div>
+                    
+                    <!-- Education Section -->
+                    <div class="section">
+                        <h3 class="section-header">Education</h3>
+                        <table class="education-table">
+                            <tr>
+                                <td class="education-degree">Bachelor of Science in Computer Science</td>
+                                <td class="education-date">2019 - 2023</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="education-details">University of Technology | San Francisco, CA</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">CGPA: 8.96/10.0</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">Relevant Coursework: Computer Architecture, DBMS, Operating System, OOPS, Computer Network</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <!-- Experience Section -->
+                    <div class="section">
+                        <h3 class="section-header">Experience</h3>
+                        <div>
+                            <div class="item-header">
+                                <div>
+                                    <h4 class="item-title">Software Developer Intern</h4>
+                                    <p class="item-subtitle">Tech Solutions Inc. | San Francisco, CA</p>
+                                </div>
+                                <div class="item-date">Jun 2022 - Aug 2022</div>
+                            </div>
+                            <p class="item-description">Developed and maintained web applications using React and Node.js. Collaborated with team members using Agile methodologies.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Projects Section -->
+                    <div class="section">
+                        <h3 class="section-header">Projects</h3>
+                        <div>
+                            <div class="item-header">
+                                <h4 class="item-title">
+                                    <a href="https://github.com/johndoe/ecommerce" class="project-link">
+                                        E-Commerce Platform
+                                    </a>
+                                </h4>
+                            </div>
+                            <p class="item-description">Full-stack e-commerce application built with React, Node.js, and MongoDB.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications Section -->
+                    <div class="section">
+                        <h3 class="section-header">Certifications</h3>
+                        <div>
+                            <div class="item-header">
+                                <h4 class="item-title">AWS Certified Developer</h4>
+                            </div>
+                            <p class="item-subtitle">Amazon Web Services</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Skills Section -->
+                    <div class="section">
+                        <h3 class="section-header">Skills</h3>
+                        <p class="skills-list">Java, Python, React, Node.js, SQL, Git, Docker, AWS, JavaScript, HTML5/CSS3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="floating-download" id="floatingDownloadBtn">
+        <i class="fas fa-download"></i>
+    </div>
+    
+    <script src="script.js" defer></script>
+</body>
+</html>
