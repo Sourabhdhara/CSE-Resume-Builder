@@ -1,4 +1,4 @@
-https://sourabhdhara.github.io/CSE-Resume-Builder-/
+https://sourabhdhara.github.io/CSE-Resume-Builder/
 # 📝 Professional Resume Builder
 
 ![Resume Builder Screenshot](https://raw.githubusercontent.com/Sourabhdhara/CSE-Resume-Builder-/main/Screenshot.png)
